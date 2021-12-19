@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "b3c6a0ee-2734-4168-ac14-5a93cdc63d59",
+		"name": "iot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"firstname\": \"Rohit\",\r\n    \"lastname\": \"Nimkar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sensor",
+			"item": [
+				{
+					"name": "Add Sensor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\": \"HC-SR0421\",\r\n    \"description\": \"Sample description\",\r\n        \"controller\": {\r\n            \"id\": 17\r\n           \r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sensor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sensor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Sensors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/sensor/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sensor",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "wwf",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Controller",
+			"item": [
+				{
+					"name": "Add Controller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\": \"Uno\",\r\n    \"type\": {\r\n        \"id\": 14\r\n    },\r\n    \"project\": {\r\n        \"id\": 10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/uc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"uc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Controllers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/uc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"uc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Controller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/project",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\": \"Water Heating Controllwe\",\r\n    \"user\": {\r\n        \"id\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/project",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Controller Model",
+			"item": [
+				{
+					"name": "Get All Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ucm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ucm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"caption\": \"Black Pill\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/ucm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"ucm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Model By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Update Model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzOTg5MzM3MiwiaWF0IjoxNjM5ODkxNTcyfQ._MR9PsLR7jp2gbFY0MOwQXcb3nT7eKf2HvnuZthnPW8",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		}
+	]
+}
