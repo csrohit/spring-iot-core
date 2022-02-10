@@ -2,6 +2,10 @@ package io.csrohit.embedded.iot.service;
 
 import io.csrohit.embedded.iot.model.Sensor;
 import io.csrohit.embedded.iot.repository.SensorRepository;
+import io.csrohit.embedded.iot.specification.SearchCriteria;
+import io.csrohit.embedded.iot.specification.SensorSpecification;
+
+import io.csrohit.embedded.iot.specification.SpecificationBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,5 +47,28 @@ public class SensorService {
     return sensorRepository.findAll();
 
     }
+
+	public List<Sensor> findAllFilter(String filter) {
+        if(filter != null && !filter.isEmpty()){
+            String filters = filter.split(";")[0];
+            int operatorIndex = filters.indexOf(">");
+            String key = filters.substring(0, operatorIndex);
+            String value = filters.substring(operatorIndex+1, filters.length());
+            String operator = filters.substring(operatorIndex, operatorIndex+1);
+            SearchCriteria criteria = new SearchCriteria(key, operator, value);
+            SensorSpecification specification = new SensorSpecification(criteria);
+
+            SpecificationBuilder<Sensor> builder = new SpecificationBuilder<>();
+            builder.with("name", "==", "rohit");
+            builder.with("age", ">", "30");
+            builder.with("gender", "", "rohit");
+
+
+            return sensorRepository.findAll(specification);
+        }else{
+            return sensorRepository.findAll();
+        }
+
+	}
 
 }
