@@ -2,7 +2,7 @@ package io.csrohit.embedded.iot.model;
 
 import javax.persistence.*;
 
-//@MappedSuperclass
+@MappedSuperclass
 public class IdCaption {
 
     @Id

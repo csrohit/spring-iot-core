@@ -7,14 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Project {
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private String caption;
-
+public class Project extends IdCaption {
     @OneToMany(mappedBy = "project")
     @JsonIgnore
     private List<MicroController> controllers;
@@ -22,15 +15,6 @@ public class Project {
     @ManyToOne
     @JsonIgnore
     private User user;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<MicroController> getControllers() {
         return controllers;
     }
@@ -47,11 +31,4 @@ public class Project {
         this.user = user;
     }
 
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
 }

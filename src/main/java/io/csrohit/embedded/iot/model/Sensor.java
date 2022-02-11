@@ -1,23 +1,12 @@
 package io.csrohit.embedded.iot.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Date;
 
 @Entity
-public class Sensor {
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Sensor extends IdCaption {
 
-    @Column(nullable = false)
-    private String caption;
 
     private String description;
 
@@ -42,23 +31,6 @@ public class Sensor {
         updateTimeStamp = Date.from(Instant.now());
     }
 
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
 
     public String getDescription() {
         return description;

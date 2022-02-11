@@ -6,13 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class MicroController {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+public class MicroController extends IdCaption {
 
-    private String caption;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
@@ -42,15 +37,6 @@ public class MicroController {
         this.type = type;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Sensor> getSensors() {
         return sensors;
     }
@@ -59,11 +45,5 @@ public class MicroController {
         this.sensors = sensors;
     }
 
-    public String getCaption() {
-        return caption;
-    }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
 }

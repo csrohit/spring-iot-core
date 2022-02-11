@@ -37,6 +37,15 @@ public class SensorController {
         }
     }
 
+    @GetMapping("test")
+    public ResponseEntity<?> findCaption(@RequestParam(value = "filter", required = false)String filter){
+        try{
+            return ResponseEntity.ok().body(sensorService.findAllFilter(filter));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);
+        }
+    }
+
 //    @GetMapping
 //    public ResponseEntity<?> findAll(
 //            @RequestParam(name = "page") short page,

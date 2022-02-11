@@ -6,19 +6,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class MicroControllerModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class MicroControllerModel extends IdCaption {
 
-    public String getCaption() {
-        return caption;
-    }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
+
+
+
+    @OneToMany(mappedBy = "type")
+    @JsonIgnore
+    private Set<MicroController> controllers;
 
     public Set<MicroController> getControllers() {
         return controllers;
@@ -28,17 +24,4 @@ public class MicroControllerModel {
         this.controllers = controllers;
     }
 
-    private String caption;
-
-    @OneToMany(mappedBy = "type")
-    @JsonIgnore
-    private Set<MicroController> controllers;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
