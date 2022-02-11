@@ -6,6 +6,8 @@ import io.csrohit.embedded.iot.model.Subject;
 import io.csrohit.embedded.iot.repository.SubjectRepository;
 import io.csrohit.embedded.iot.utils.rsql.CustomRsqlVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,16 @@ public class SubjectService {
     public List<Subject> findAll(){return repository.findAll();}
     public Subject save(Subject subject){
         return repository.save(subject);
+    }
+
+    public Page<Subject> findAll(String filter, Pageable pageable) {
+
+        Node rootNode = new RSQLParser().parse(filter);
+        Specification<Subject> spec = rootNode.accept(new CustomRsqlVisitor<Subject>());
+        return repository.findAll(spec, pageable);
+    }
+
+    public Page<Subject> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 }
