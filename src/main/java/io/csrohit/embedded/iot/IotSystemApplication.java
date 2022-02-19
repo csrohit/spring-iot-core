@@ -5,6 +5,10 @@ import com.github.bohnman.squiggly.Squiggly;
 import com.github.bohnman.squiggly.web.RequestSquigglyContextProvider;
 import com.github.bohnman.squiggly.web.SquigglyRequestFilter;
 import com.google.common.collect.Iterables;
+import io.csrohit.embedded.iot.config.Config;
+import io.csrohit.embedded.iot.utils.slack.SlackField;
+import io.csrohit.embedded.iot.utils.slack.SlackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -19,7 +23,19 @@ import javax.servlet.http.HttpServletRequest;
 public class IotSystemApplication {
 
 	public static void main(String[] args) {
+
+
 		ConfigurableApplicationContext context = SpringApplication.run(IotSystemApplication.class, args);
+//		SlackService service = context.getBean(SlackService.class);
+//		service.sendMessage("🐐 " + "notifier",
+//				SlackService.SlackChannel.NotificationsBackInStock,
+//				new SlackField("Shop", "shop-name"),
+//				new SlackField("ShopifyPlan", "plan-name"),
+//				new SlackField("customerEmail", "customer-email-address"),
+//				new SlackField("shopEmail", "shop-email-address"),
+//				new SlackField("intercom_url", "url-for-intercom")
+//		);
+
 
 		Iterable<ObjectMapper> objectMappers = context.getBeansOfType(ObjectMapper.class)
 				.values();
